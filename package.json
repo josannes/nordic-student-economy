@@ -1,0 +1,11 @@
+{
+  "name": "nordic-student-economy",
+  "private": true,
+  "type": "module",
+  "description": "Calculator for Nordic students working part-time in Denmark: Danish tax, student support and net pay.",
+  "scripts": {
+    "test": "node --test tests/",
+    "serve": "python3 -m http.server 8000"
+  },
+  "license": "MIT"
+}
