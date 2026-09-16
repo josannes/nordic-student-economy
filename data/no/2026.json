@@ -1,0 +1,120 @@
+{
+  "country": "no",
+  "year": 2026,
+  "currency": "NOK",
+  "_about": "Lånekassen (Norwegian State Educational Loan Fund) rules for a full-time university degree student in the Nordic region, calendar year 2026. Calendar year 2026 spans school years 2025-2026 (January to June) and 2026-2027 (August to December).",
+  "rates": {
+    "lanekassen": {
+      "basicSupportPerMonth2025_2026": {
+        "value": 15169,
+        "unit": "NOK/month",
+        "year": 2025,
+        "appliesTo": "School year 2025-2026 (January to June 2026). Paid out as basic loan (basislån).",
+        "source": "https://lovdata.no/dokument/LTI/forskrift/2025-02-27-348",
+        "sourceTitle": "Forskrift om endring i forskrift om utdanningsstøtte (2025-2026), § 74",
+        "checked": "2026-09-16"
+      },
+      "basicSupportPerMonth2026_2027": {
+        "value": 15488,
+        "unit": "NOK/month",
+        "year": 2026,
+        "appliesTo": "School year 2026-2027 (August to December 2026). Paid out as basic loan (basislån).",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 74 Basislån",
+        "checked": "2026-09-16"
+      },
+      "monthsPerSchoolYear": {
+        "value": 11,
+        "unit": "months",
+        "year": 2026,
+        "appliesTo": "University students with a full-time spring semester. July is not paid.",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 72 Periode med lån og stipend i studieåret",
+        "checked": "2026-09-16"
+      },
+      "conversionShareCredits": {
+        "value": 0.15,
+        "unit": "share of basic loan",
+        "year": 2026,
+        "appliesTo": "Converted to grant for passed credits. Only for students not living with their parents. Students abroad must submit their results themselves.",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 77 Omgjøring på grunnlag av beståtte studiepoeng",
+        "checked": "2026-09-16"
+      },
+      "conversionShareDegree": {
+        "value": 0.25,
+        "unit": "share of basic loan",
+        "year": 2026,
+        "appliesTo": "Converted to grant when the degree is completed. Students abroad get it after submitting the diploma.",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 78 Omgjøring på grunnlag av bestått grad",
+        "checked": "2026-09-16"
+      },
+      "incomeLimit": {
+        "value": 234821,
+        "unit": "NOK/year",
+        "year": 2026,
+        "appliesTo": "Gross personal and capital income in the calendar year, when support is received for more than 7 months of the year.",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 98 Behovsprøving mot person- og kapitalinntekt",
+        "checked": "2026-09-16"
+      },
+      "incomeLimitShortSupport": {
+        "value": 587053,
+        "unit": "NOK/year",
+        "year": 2026,
+        "appliesTo": "Income limit when support is received for 7 months or less of the calendar year.",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 98 Behovsprøving mot person- og kapitalinntekt",
+        "checked": "2026-09-16"
+      },
+      "shortSupportMaxMonths": {
+        "value": 7,
+        "unit": "months",
+        "year": 2026,
+        "appliesTo": "The higher income limit applies with this many support months or fewer.",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 98 Behovsprøving mot person- og kapitalinntekt",
+        "checked": "2026-09-16"
+      },
+      "grantReductionPerMonth": {
+        "value": 0.05,
+        "unit": "share of income above limit, per support month",
+        "year": 2026,
+        "appliesTo": "The grant is reduced by 5 % of the income above the limit for each month with support. The grant cannot go below zero.",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 98 Behovsprøving mot person- og kapitalinntekt",
+        "checked": "2026-09-16"
+      },
+      "wealthLimit": {
+        "value": 534225,
+        "unit": "NOK",
+        "year": 2026,
+        "appliesTo": "Not used in calculations. Shown as a note: wealth above this also reduces the grant.",
+        "source": "https://lovdata.no/dokument/SF/forskrift/2020-04-15-798",
+        "sourceTitle": "Forskrift om utdanningsstøtte, § 100 Behovsprøving mot formue",
+        "checked": "2026-09-16"
+      },
+      "nordicSupportExcluded": {
+        "value": true,
+        "unit": "rule",
+        "year": 2026,
+        "appliesTo": "No Lånekassen support in months with living support from another Nordic country (SU, CSN). Those periods count against the maximum support time.",
+        "source": "https://lanekassen.no/nb-NO/stipend-og-lan/norden/universitet-og-hogskole-i-norden/",
+        "sourceTitle": "Lånekassen: Universitet og høgskole i Norden",
+        "checked": "2026-09-16"
+      }
+    },
+    "exchangeRates": {
+      "dkkToNok2025": {
+        "value": 1.57,
+        "unit": "NOK per DKK",
+        "year": 2025,
+        "appliesTo": "Norges Bank annual average 2025 (157.00 NOK per 100 DKK). Default until the 2026 average is published. Users can override it.",
+        "source": "https://data.norges-bank.no/api/data/EXR/A.DKK.NOK.SP?format=csv&startPeriod=2024",
+        "sourceTitle": "Norges Bank: Exchange rates, annual average (Average of observations through period)",
+        "checked": "2026-09-16"
+      }
+    }
+  }
+}

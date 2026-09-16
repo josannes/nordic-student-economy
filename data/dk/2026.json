@@ -1,0 +1,633 @@
+{
+  "country": "dk",
+  "year": 2026,
+  "currency": "DKK",
+  "_about": "Danish income tax and SU (Danish state education support) rules for a student over 18 working part-time in Denmark, income year 2026. Top tax brackets are listed for completeness; student incomes rarely reach them.",
+  "rates": {
+    "tax": {
+      "labourMarketContribution": {
+        "value": 0.08,
+        "unit": "share of wage income",
+        "year": 2026,
+        "appliesTo": "AM-bidrag. Charged on wages and holiday pay, not on SU. From 2026 only from the year you turn 18.",
+        "source": "https://skm.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/arbejdsmarkedsbidragsloven",
+        "sourceTitle": "Arbejdsmarkedsbidragsloven, satser 2026",
+        "checked": "2026-09-16"
+      },
+      "personalAllowance": {
+        "value": 54100,
+        "unit": "DKK/year",
+        "year": 2026,
+        "appliesTo": "Personfradrag. Also given to students under the student rule (limited tax liability), see PSL § 10, stk. 5.",
+        "source": "https://skm.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+        "sourceTitle": "Personskatteloven, satser 2026: Personfradrag (§ 10, stk. 1)",
+        "checked": "2026-09-16"
+      },
+      "bottomTax": {
+        "value": 0.1201,
+        "unit": "share of personal income",
+        "year": 2026,
+        "appliesTo": "Bundskat, charged on personal income (wages after AM-bidrag, and SU) above the personal allowance.",
+        "source": "https://skm.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+        "sourceTitle": "Personskatteloven, satser 2026: Bundskatteprocent (§ 6, stk. 2)",
+        "checked": "2026-09-16"
+      },
+      "middleTaxRate": {
+        "value": 0.075,
+        "unit": "share of personal income",
+        "year": 2026,
+        "appliesTo": "Mellemskat. Rarely relevant for students.",
+        "source": "https://skm.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+        "sourceTitle": "Personskatteloven, satser 2026: Mellemskat (§ 7)",
+        "checked": "2026-09-16"
+      },
+      "middleTaxThreshold": {
+        "value": 641200,
+        "unit": "DKK/year",
+        "year": 2026,
+        "appliesTo": "Personal income above this pays mellemskat. The calculator warns if income gets close and does not model it.",
+        "source": "https://skm.dk/tal-og-metode/satser/satser-og-beloebsgraenser-i-lovgivningen/personskatteloven",
+        "sourceTitle": "Personskatteloven, satser 2026: Mellemskattegrænse (§ 7, stk. 2)",
+        "checked": "2026-09-16"
+      },
+      "employmentDeductionRate": {
+        "value": 0.1275,
+        "unit": "share of wage income after AM-bidrag base",
+        "year": 2026,
+        "appliesTo": "Beskæftigelsesfradrag. Computed from the AM-bidrag base (wages, not SU). Deducted from taxable income, so it lowers municipal and church tax, not bundskat.",
+        "source": "https://info.skat.dk/data.aspx?oid=2273718",
+        "sourceTitle": "Den juridiske vejledning C.A.4.3.7 Beskæftigelsesfradrag",
+        "checked": "2026-09-16"
+      },
+      "employmentDeductionMax": {
+        "value": 63300,
+        "unit": "DKK/year",
+        "year": 2026,
+        "appliesTo": "Maximum beskæftigelsesfradrag.",
+        "source": "https://info.skat.dk/data.aspx?oid=2273718",
+        "sourceTitle": "Den juridiske vejledning C.A.4.3.7 Beskæftigelsesfradrag",
+        "checked": "2026-09-16"
+      },
+      "jobDeductionRate": {
+        "value": 0.045,
+        "unit": "share of wage income above threshold",
+        "year": 2026,
+        "appliesTo": "Jobfradrag, 4.5 % of the AM-bidrag base above the threshold.",
+        "source": "https://info.skat.dk/data.aspx?oid=2273725",
+        "sourceTitle": "Den juridiske vejledning C.A.4.3.8 Jobfradrag",
+        "checked": "2026-09-16"
+      },
+      "jobDeductionThreshold": {
+        "value": 235200,
+        "unit": "DKK/year",
+        "year": 2026,
+        "appliesTo": "Jobfradrag starts above this wage income.",
+        "source": "https://info.skat.dk/data.aspx?oid=2273725",
+        "sourceTitle": "Den juridiske vejledning C.A.4.3.8 Jobfradrag",
+        "checked": "2026-09-16"
+      },
+      "jobDeductionMax": {
+        "value": 3100,
+        "unit": "DKK/year",
+        "year": 2026,
+        "appliesTo": "Maximum jobfradrag.",
+        "source": "https://info.skat.dk/data.aspx?oid=2273725",
+        "sourceTitle": "Den juridiske vejledning C.A.4.3.8 Jobfradrag",
+        "checked": "2026-09-16"
+      },
+      "withholdingNoTaxCard": {
+        "value": 0.55,
+        "unit": "share of wage after AM-bidrag",
+        "year": 2026,
+        "appliesTo": "Employers withhold 55 % A-skat with no deductions when there is no tax card, plus AM-bidrag. Excess comes back with the annual tax statement (årsopgørelse).",
+        "source": "https://info.skat.dk/data.aspx?oid=2169085",
+        "sourceTitle": "Den juridiske vejledning A.B.4.1.1.2.4 Intet skattekort",
+        "checked": "2026-09-16"
+      },
+      "limitedLiabilityMunicipalRate": {
+        "value": 0.25,
+        "unit": "share of taxable income",
+        "year": 2026,
+        "appliesTo": "Replaces municipal tax for people with limited tax liability, including foreign students under the student rule. No church tax.",
+        "source": "https://skm.dk/tal-og-metode/satser/statistik-i-kommunerne/begraenset-skattepligtige-kommunal-skattesats",
+        "sourceTitle": "Begrænset skattepligtige, kommunal skattesats 2026",
+        "checked": "2026-09-16"
+      },
+      "studentRuleDays": {
+        "value": 365,
+        "unit": "days within 2 years",
+        "year": 2026,
+        "appliesTo": "Student rule (KSL § 8, stk. 2): a student who moved to Denmark to study and stays tax liable at home becomes fully tax liable only after 365 days within 2 years. Assessed case by case.",
+        "source": "https://skat.dk/borger/udlandsforhold/du-er-studerende",
+        "sourceTitle": "Skattepligt for udenlandske studerende",
+        "checked": "2026-09-16"
+      },
+      "nordicTreatyStudentArticle": {
+        "value": true,
+        "unit": "rule",
+        "year": 2026,
+        "appliesTo": "Nordic tax treaty art. 20: support from outside Denmark for maintenance or study (e.g. Lånekassen, CSN) is not taxed in Denmark, if the student lived in the home country immediately before starting. Loans are not mentioned; the calculator treats them as not taxable.",
+        "source": "https://info.skat.dk/data.aspx?oid=2061393",
+        "sourceTitle": "Den juridiske vejledning C.F.8.2.2.20.1 Studerende m.m.",
+        "checked": "2026-09-16"
+      },
+      "holidayPay": {
+        "value": 0.125,
+        "unit": "share of wage",
+        "year": 2026,
+        "appliesTo": "Feriepenge for hourly paid employees, on top of wages, before AM-bidrag and A-skat. Taxed like wages.",
+        "source": "https://www.borger.dk/arbejde-dagpenge-ferie/Oversigt-ferie/loenmodtager-og-ferie",
+        "sourceTitle": "borger.dk: Lønmodtager og ferie",
+        "checked": "2026-09-16"
+      },
+      "municipalities": {
+        "value": {
+          "Albertslund": {
+            "municipalTax": 0.256,
+            "churchTax": 0.008
+          },
+          "Allerød": {
+            "municipalTax": 0.253,
+            "churchTax": 0.0058
+          },
+          "Assens": {
+            "municipalTax": 0.261,
+            "churchTax": 0.0098
+          },
+          "Ballerup": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0075
+          },
+          "Billund": {
+            "municipalTax": 0.24,
+            "churchTax": 0.0089
+          },
+          "Bornholm": {
+            "municipalTax": 0.262,
+            "churchTax": 0.0093
+          },
+          "Brøndby": {
+            "municipalTax": 0.243,
+            "churchTax": 0.008
+          },
+          "Brønderslev": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0106
+          },
+          "Dragør": {
+            "municipalTax": 0.248,
+            "churchTax": 0.0061
+          },
+          "Egedal": {
+            "municipalTax": 0.257,
+            "churchTax": 0.0076
+          },
+          "Esbjerg": {
+            "municipalTax": 0.261,
+            "churchTax": 0.0081
+          },
+          "Faaborg-Midtfyn": {
+            "municipalTax": 0.261,
+            "churchTax": 0.0105
+          },
+          "Fanø": {
+            "municipalTax": 0.261,
+            "churchTax": 0.0114
+          },
+          "Favrskov": {
+            "municipalTax": 0.257,
+            "churchTax": 0.0096
+          },
+          "Faxe": {
+            "municipalTax": 0.258,
+            "churchTax": 0.0108
+          },
+          "Fredensborg": {
+            "municipalTax": 0.253,
+            "churchTax": 0.0064
+          },
+          "Fredericia": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0088
+          },
+          "Frederiksberg": {
+            "municipalTax": 0.245,
+            "churchTax": 0.005
+          },
+          "Frederikshavn": {
+            "municipalTax": 0.262,
+            "churchTax": 0.0103
+          },
+          "Frederikssund": {
+            "municipalTax": 0.256,
+            "churchTax": 0.0096
+          },
+          "Furesø": {
+            "municipalTax": 0.2488,
+            "churchTax": 0.007
+          },
+          "Gentofte": {
+            "municipalTax": 0.2414,
+            "churchTax": 0.0038
+          },
+          "Gladsaxe": {
+            "municipalTax": 0.236,
+            "churchTax": 0.0075
+          },
+          "Glostrup": {
+            "municipalTax": 0.246,
+            "churchTax": 0.008
+          },
+          "Greve": {
+            "municipalTax": 0.2459,
+            "churchTax": 0.0081
+          },
+          "Gribskov": {
+            "municipalTax": 0.254,
+            "churchTax": 0.0085
+          },
+          "Guldborgsund": {
+            "municipalTax": 0.258,
+            "churchTax": 0.0116
+          },
+          "Haderslev": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0095
+          },
+          "Halsnæs": {
+            "municipalTax": 0.257,
+            "churchTax": 0.0085
+          },
+          "Hedensted": {
+            "municipalTax": 0.2552,
+            "churchTax": 0.0098
+          },
+          "Helsingør": {
+            "municipalTax": 0.2582,
+            "churchTax": 0.0063
+          },
+          "Herlev": {
+            "municipalTax": 0.237,
+            "churchTax": 0.008
+          },
+          "Herning": {
+            "municipalTax": 0.254,
+            "churchTax": 0.0099
+          },
+          "Hillerød": {
+            "municipalTax": 0.256,
+            "churchTax": 0.0069
+          },
+          "Hjørring": {
+            "municipalTax": 0.2621,
+            "churchTax": 0.0119
+          },
+          "Holbæk": {
+            "municipalTax": 0.253,
+            "churchTax": 0.0096
+          },
+          "Holstebro": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0108
+          },
+          "Horsens": {
+            "municipalTax": 0.2569,
+            "churchTax": 0.0079
+          },
+          "Hvidovre": {
+            "municipalTax": 0.254,
+            "churchTax": 0.0072
+          },
+          "Høje-Taastrup": {
+            "municipalTax": 0.246,
+            "churchTax": 0.008
+          },
+          "Hørsholm": {
+            "municipalTax": 0.237,
+            "churchTax": 0.0062
+          },
+          "Ikast-Brande": {
+            "municipalTax": 0.251,
+            "churchTax": 0.0097
+          },
+          "Ishøj": {
+            "municipalTax": 0.25,
+            "churchTax": 0.009
+          },
+          "Jammerbugt": {
+            "municipalTax": 0.257,
+            "churchTax": 0.012
+          },
+          "Kalundborg": {
+            "municipalTax": 0.242,
+            "churchTax": 0.0101
+          },
+          "Kerteminde": {
+            "municipalTax": 0.261,
+            "churchTax": 0.0098
+          },
+          "Kolding": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0092
+          },
+          "København": {
+            "municipalTax": 0.2339,
+            "churchTax": 0.008
+          },
+          "Køge": {
+            "municipalTax": 0.2526,
+            "churchTax": 0.0087
+          },
+          "Langeland": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0114
+          },
+          "Lejre": {
+            "municipalTax": 0.2531,
+            "churchTax": 0.0105
+          },
+          "Lemvig": {
+            "municipalTax": 0.257,
+            "churchTax": 0.0127
+          },
+          "Lolland": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0123
+          },
+          "Lyngby-Taarbæk": {
+            "municipalTax": 0.2438,
+            "churchTax": 0.006
+          },
+          "Læsø": {
+            "municipalTax": 0.263,
+            "churchTax": 0.013
+          },
+          "Mariagerfjord": {
+            "municipalTax": 0.259,
+            "churchTax": 0.0115
+          },
+          "Middelfart": {
+            "municipalTax": 0.258,
+            "churchTax": 0.009
+          },
+          "Morsø": {
+            "municipalTax": 0.258,
+            "churchTax": 0.012
+          },
+          "Norddjurs": {
+            "municipalTax": 0.26,
+            "churchTax": 0.01
+          },
+          "Nordfyns": {
+            "municipalTax": 0.26,
+            "churchTax": 0.0104
+          },
+          "Nyborg": {
+            "municipalTax": 0.263,
+            "churchTax": 0.01
+          },
+          "Næstved": {
+            "municipalTax": 0.25,
+            "churchTax": 0.0098
+          },
+          "Odder": {
+            "municipalTax": 0.251,
+            "churchTax": 0.0095
+          },
+          "Odense": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0068
+          },
+          "Odsherred": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0098
+          },
+          "Randers": {
+            "municipalTax": 0.26,
+            "churchTax": 0.0089
+          },
+          "Rebild": {
+            "municipalTax": 0.2583,
+            "churchTax": 0.012
+          },
+          "Ringkøbing-Skjern": {
+            "municipalTax": 0.25,
+            "churchTax": 0.0105
+          },
+          "Ringsted": {
+            "municipalTax": 0.261,
+            "churchTax": 0.0095
+          },
+          "Roskilde": {
+            "municipalTax": 0.252,
+            "churchTax": 0.0084
+          },
+          "Rudersdal": {
+            "municipalTax": 0.2347,
+            "churchTax": 0.0057
+          },
+          "Rødovre": {
+            "municipalTax": 0.257,
+            "churchTax": 0.0072
+          },
+          "Samsø": {
+            "municipalTax": 0.259,
+            "churchTax": 0.012
+          },
+          "Silkeborg": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0094
+          },
+          "Skanderborg": {
+            "municipalTax": 0.26,
+            "churchTax": 0.0086
+          },
+          "Skive": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0109
+          },
+          "Slagelse": {
+            "municipalTax": 0.261,
+            "churchTax": 0.0096
+          },
+          "Solrød": {
+            "municipalTax": 0.2499,
+            "churchTax": 0.0084
+          },
+          "Sorø": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0095
+          },
+          "Stevns": {
+            "municipalTax": 0.26,
+            "churchTax": 0.011
+          },
+          "Struer": {
+            "municipalTax": 0.253,
+            "churchTax": 0.012
+          },
+          "Svendborg": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0102
+          },
+          "Syddjurs": {
+            "municipalTax": 0.259,
+            "churchTax": 0.0098
+          },
+          "Sønderborg": {
+            "municipalTax": 0.257,
+            "churchTax": 0.0091
+          },
+          "Thisted": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0127
+          },
+          "Tårnby": {
+            "municipalTax": 0.241,
+            "churchTax": 0.0061
+          },
+          "Tønder": {
+            "municipalTax": 0.253,
+            "churchTax": 0.0116
+          },
+          "Vallensbæk": {
+            "municipalTax": 0.256,
+            "churchTax": 0.008
+          },
+          "Varde": {
+            "municipalTax": 0.251,
+            "churchTax": 0.0095
+          },
+          "Vejen": {
+            "municipalTax": 0.258,
+            "churchTax": 0.0106
+          },
+          "Vejle": {
+            "municipalTax": 0.234,
+            "churchTax": 0.0089
+          },
+          "Vesthimmerland": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0118
+          },
+          "Viborg": {
+            "municipalTax": 0.255,
+            "churchTax": 0.0093
+          },
+          "Vordingborg": {
+            "municipalTax": 0.263,
+            "churchTax": 0.0102
+          },
+          "Ærø": {
+            "municipalTax": 0.261,
+            "churchTax": 0.0107
+          },
+          "Aabenraa": {
+            "municipalTax": 0.256,
+            "churchTax": 0.0095
+          },
+          "Aalborg": {
+            "municipalTax": 0.256,
+            "churchTax": 0.0098
+          },
+          "Aarhus": {
+            "municipalTax": 0.2452,
+            "churchTax": 0.0074
+          }
+        },
+        "unit": "share of taxable income, per municipality",
+        "year": 2026,
+        "appliesTo": "Municipal tax (kommuneskat) and church tax (kirkeskat, only for members of the Danish folkekirke) for all 98 municipalities.",
+        "source": "https://skm.dk/tal-og-metode/satser/oversigt-over-kommuneskatter",
+        "sourceTitle": "Oversigt over kommuneskatter 2026",
+        "checked": "2026-09-16"
+      }
+    },
+    "su": {
+      "grantAwayFromHomePerMonth": {
+        "value": 7426,
+        "unit": "DKK/month before tax",
+        "year": 2026,
+        "appliesTo": "SU grant for students on a higher education degree not living with their parents. Taxable personal income, no AM-bidrag.",
+        "source": "https://www.su.dk/satser/videregaaende-uddannelser-satser-for-su-til-udeboende",
+        "sourceTitle": "Satser for SU til udeboende på videregående uddannelser",
+        "checked": "2026-09-16"
+      },
+      "loanMaxPerMonth": {
+        "value": 3799,
+        "unit": "DKK/month",
+        "year": 2026,
+        "appliesTo": "Optional SU loan on top of the grant. You choose the amount, up to this maximum. Not taxable.",
+        "source": "https://www.su.dk/satser/satser-for-su-laan",
+        "sourceTitle": "Satser for SU-lån",
+        "checked": "2026-09-16"
+      },
+      "loanInterestDuringStudies": {
+        "value": 0.04,
+        "unit": "per year",
+        "year": 2026,
+        "appliesTo": "Interest on the SU loan while studying, compounded.",
+        "source": "https://www.su.dk/su-laan/naar-du-skal-betale-laan-tilbage/renter-paa-dit-su-laan",
+        "sourceTitle": "Renter på dit SU-lån",
+        "checked": "2026-09-16"
+      },
+      "earningsLimitMonthWithSu": {
+        "value": 20749,
+        "unit": "DKK/month",
+        "year": 2026,
+        "appliesTo": "Fribeløb for each month with SU. Income after AM-bidrag, before tax. The yearly limit is the sum of the 12 monthly amounts.",
+        "source": "https://www.su.dk/su/naar-du-faar-su/saa-meget-maa-du-tjene/satser-for-maanedsfribeloeb",
+        "sourceTitle": "Satser for månedsfribeløb",
+        "checked": "2026-09-16"
+      },
+      "earningsLimitMonthEnrolledNoSu": {
+        "value": 23598,
+        "unit": "DKK/month",
+        "year": 2026,
+        "appliesTo": "Fribeløb for months enrolled without SU.",
+        "source": "https://www.su.dk/su/naar-du-faar-su/saa-meget-maa-du-tjene/satser-for-maanedsfribeloeb",
+        "sourceTitle": "Satser for månedsfribeløb",
+        "checked": "2026-09-16"
+      },
+      "earningsLimitMonthNoRight": {
+        "value": 45420,
+        "unit": "DKK/month",
+        "year": 2026,
+        "appliesTo": "Fribeløb for months with no right to SU, including months with other public support such as Lånekassen.",
+        "source": "https://www.su.dk/su/naar-du-faar-su/saa-meget-maa-du-tjene/satser-for-maanedsfribeloeb",
+        "sourceTitle": "Satser for månedsfribeløb",
+        "checked": "2026-09-16"
+      },
+      "workerMinHoursPerWeek": {
+        "value": {
+          "min": 10,
+          "max": 12
+        },
+        "unit": "hours/week",
+        "year": 2026,
+        "appliesTo": "EU/EEA citizens can get SU as workers when working at least 10 to 12 hours every week. An average is not enough. The approval letter states the exact minimum.",
+        "source": "https://www.su.dk/foreign-citizen/dk-udenlandsk-statsborger/eu-regler/du-arbejder-i-danmark",
+        "sourceTitle": "su.dk: Du arbejder i Danmark",
+        "checked": "2026-09-16"
+      },
+      "workerMinConsecutiveWeeks": {
+        "value": 10,
+        "unit": "weeks",
+        "year": 2026,
+        "appliesTo": "The hours must be kept for at least 10 weeks in a row, and throughout the SU period.",
+        "source": "https://www.su.dk/foreign-citizen/dk-udenlandsk-statsborger/eu-regler/du-arbejder-i-danmark",
+        "sourceTitle": "su.dk: Du arbejder i Danmark",
+        "checked": "2026-09-16"
+      },
+      "noCombinationWithOtherCountrySupport": {
+        "value": true,
+        "unit": "rule",
+        "year": 2026,
+        "appliesTo": "No SU while receiving education support under another country's rules.",
+        "source": "https://www.retsinformation.dk/eli/lta/2025/794",
+        "sourceTitle": "SU-bekendtgørelsen (BEK nr 794 af 2025), § 10",
+        "checked": "2026-09-16"
+      }
+    }
+  }
+}
