@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nordic Student Economy</title>
+  <meta name="description" content="Should you take that student job in Denmark, and what happens to your student support? Danish tax, SU and Lånekassen in one calculator.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Nordic Student Economy</h1>
+      <p class="lead">Should you take that student job in Denmark, and what happens to your student support?
+        Compare Lånekassen with Danish SU, see the tax, and what an hour of work is really worth.</p>
+      <p class="disclaimer">A calculator, not advice. Rules for <strong>2026</strong>. Every rate links to its official source.
+        Nothing you type leaves your browser.</p>
+      <a class="jump" href="#results">See results</a>
+    </div>
+  </header>
+
+  <main class="wrap layout">
+    <form id="form" class="form" autocomplete="off" novalidate>
+      <fieldset>
+        <legend>Your job</legend>
+        <div class="row">
+          <label>Hourly wage (DKK)
+            <input type="number" name="hourlyWage" min="0" step="1" value="140" inputmode="decimal">
+          </label>
+          <label>Hours per week
+            <input type="number" name="hoursPerWeek" min="0" max="60" step="0.5" value="12" inputmode="decimal">
+          </label>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="holidayPayIncluded">
+          The hourly wage already includes holiday pay (feriepenge)
+        </label>
+        <div class="months" data-group="jobMonths">
+          <span class="label">Months you work in 2026</span>
+          <div class="month-grid"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your studies</legend>
+        <div class="months" data-group="studyMonths">
+          <span class="label">Months you study in 2026</span>
+          <div class="month-grid"></div>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="degreeCompleted" checked>
+          I will complete my degree
+        </label>
+        <p class="hint">Lånekassen turns part of the loan into a grant when you finish. Untick to see what happens if you don't.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Where you live</legend>
+        <div class="chips" id="municipality-chips" role="radiogroup" aria-label="Municipality"></div>
+        <label>Other municipality (kommune)
+          <input type="text" name="municipalityOther" list="municipality-list" placeholder="Start typing…">
+          <datalist id="municipality-list"></datalist>
+        </label>
+        <div class="radio-group" role="radiogroup">
+          <span class="label">How long have you lived in Denmark?</span>
+          <label class="check"><input type="radio" name="residence" value="new" checked> Less than a year (student rule)</label>
+          <label class="check"><input type="radio" name="residence" value="settled"> More than 365 days within 2 years</label>
+        </div>
+        <label class="check" id="church-wrap" hidden>
+          <input type="checkbox" name="churchMember">
+          Member of the Danish church (folkekirken)
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tax card</legend>
+        <div class="radio-group" role="radiogroup">
+          <label class="check"><input type="radio" name="taxCard" value="yes" checked> I have a tax card (skattekort) from skat.dk</label>
+          <label class="check"><input type="radio" name="taxCard" value="no"> No tax card yet</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Loans</legend>
+        <div class="radio-group" role="radiogroup">
+          <span class="label">Lånekassen</span>
+          <label class="check"><input type="radio" name="lkLoan" value="full" checked> Full basic loan</label>
+          <label class="check"><input type="radio" name="lkLoan" value="convertibleOnly"> Only the part that can become grant (40 %)</label>
+        </div>
+        <div class="radio-group" role="radiogroup">
+          <span class="label">SU loan (SU-lån)</span>
+          <label class="check"><input type="radio" name="suLoan" value="none" checked> No loan</label>
+          <label class="check"><input type="radio" name="suLoan" value="max"> Maximum</label>
+          <label class="check"><input type="radio" name="suLoan" value="custom"> Custom amount per month</label>
+          <input type="number" name="suLoanCustom" min="0" step="100" value="2000" aria-label="SU loan per month (DKK)" hidden>
+        </div>
+      </fieldset>
+
+      <details>
+        <summary>Advanced</summary>
+        <label>Other income in 2026 (NOK)
+          <input type="number" name="otherIncomeNok" min="0" step="1000" value="0" inputmode="decimal">
+        </label>
+        <p class="hint">For example a summer job in Norway. Counts towards Lånekassen's income limit.</p>
+        <label>Exchange rate (NOK per DKK)
+          <input type="number" name="nokPerDkk" min="0.5" max="3" step="0.01" inputmode="decimal">
+        </label>
+        <p class="hint" id="rate-hint"></p>
+      </details>
+    </form>
+
+    <section class="results" aria-live="polite">
+      <div id="results"><p class="loading">Loading rates…</p></div>
+    </section>
+  </main>
+
+  <section class="wrap sources" id="sources">
+    <h2>Sources</h2>
+    <p>Every rate used, where it comes from, and when it was last checked.</p>
+    <div id="source-list"></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>This is a calculator, not advice.</strong> The numbers are estimates based on public rules for 2026 and a
+        simplified version of your situation. Check with Lånekassen, SU and Skattestyrelsen before you decide anything.</p>
+      <p>Built with Claude Code. <a href="https://github.com/josannes/nordic-student-economy">Source on GitHub</a>.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
