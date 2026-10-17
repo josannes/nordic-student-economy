@@ -94,11 +94,22 @@ function suOption(input, hoursPerWeek, suMonths, dk) {
 
 function totals(option, input) {
   const s = option.support;
+  const grantAfterTaxDkk = s.grantDkk - s.taxDkk - (s.repaymentEstimate ?? 0);
+  // Everything paid out over the year, loan included.
   const cashDkk = option.job.net + s.paidOutDkk - s.taxDkk - (s.repaymentEstimate ?? 0);
+  // Without a tax card the employer withholds more than you owe. That part is not
+  // yours this year: it comes back with the annual tax statement the following spring.
+  const refundNextYearDkk = option.job.backWithTaxReturn;
   return {
+    // What you are left with once the loan is paid back: the only fair way to
+    // compare an option with a loan against one without.
+    keepDkk: option.job.net + grantAfterTaxDkk,
+    keepHome: (option.job.net + grantAfterTaxDkk) * input.nokPerDkk,
     cashDkk,
     cashHome: cashDkk * input.nokPerDkk,
-    grantAfterTaxDkk: s.grantDkk - s.taxDkk - (s.repaymentEstimate ?? 0),
+    cashThisYearDkk: cashDkk - refundNextYearDkk,
+    refundNextYearDkk,
+    grantAfterTaxDkk,
     loanDkk: s.loanDkk,
   };
 }

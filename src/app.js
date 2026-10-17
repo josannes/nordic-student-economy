@@ -146,6 +146,23 @@ function perHourBoxes(option) {
   </div>`;
 }
 
+// The last rows of both comparison cards. Identical in both, so the two cards
+// line up and the tax card choice shows in the same place in each.
+function totalsTail(o) {
+  const t = o.totals;
+  return `
+    ${line('What you keep', money(t.keepDkk), { total: true })}
+    ${line('Loan on top, paid back later', money(t.loanDkk))}
+    ${line(`Into your account in ${YEAR}`, money(t.cashThisYearDkk))}
+    ${
+      Math.round(t.refundNextYearDkk) > 0
+        ? line(`Back with the tax statement, spring ${YEAR + 1}`, money(t.refundNextYearDkk), {
+            rate: rates.dk.rates.tax.withholdingNoTaxCard,
+          })
+        : ''
+    }`;
+}
+
 function lanekassenCard(r, input) {
   const { dk, no } = rates;
   const lk = no.rates.lanekassen;
@@ -155,18 +172,27 @@ function lanekassenCard(r, input) {
       <p>Pick the months you study to see Lånekassen support.</p></article>`;
   }
   const s = o.support;
+  const july = input.studyMonths.includes(7)
+    ? ` July is never paid, so ${input.studyMonths.length} months of study give ${s.months} months of support.`
+    : '';
   return `<article class="card">
     <h2>Lånekassen</h2>
-    <p class="sub">Norwegian student support, ${s.months} months in ${YEAR}</p>
-    <div class="big">${money(o.totals.cashDkk)}</div>
-    <div class="big-sub">≈ ${money(o.totals.cashHome, 'NOK')} to live on in ${YEAR}</div>
+    <p class="sub">Norwegian student support, ${s.months} months in ${YEAR}.${july}</p>
+    <span class="badge neutral">No hours requirement</span>
+    <div class="big">${money(o.totals.keepDkk)}</div>
+    <div class="big-sub">≈ ${money(o.totals.keepHome, 'NOK')} you keep in ${YEAR}</div>
     <dl class="lines">
       ${line('Job, after tax', money(o.job.net))}
-      ${line('Support paid out', money(s.paidOutDkk), { rate: lk.basicSupportPerMonth2026_2027 })}
-      ${line('of which grant', money(s.grantDkk), { rate: input.lanekassen.degreeCompleted ? lk.conversionShareDegree : lk.conversionShareCredits })}
-      ${line('of which loan', money(s.loanDkk))}
+      ${line(
+        input.lanekassen.degreeCompleted ? 'Grant, once you finish the degree' : 'Grant, for passed credits',
+        money(s.grantDkk),
+        { rate: input.lanekassen.degreeCompleted ? lk.conversionShareDegree : lk.conversionShareCredits },
+      )}
       ${line('Tax on support in Denmark', money(0), { rate: dk.rates.tax.nordicTreatyStudentArticle })}
+      ${totalsTail(o)}
     </dl>
+    <p class="hint" style="margin-top:10px">Studying abroad, the support comes in two instalments, not monthly:
+      one in June or July and one in December. ${sourceLink(lk.payoutAbroad)}</p>
     ${perHourBoxes(o)}
   </article>`;
 }
@@ -189,19 +215,73 @@ function suCard(r) {
   const s = o.support;
   return `<article class="card">
     <h2>SU</h2>
-    <p class="sub">Danish support as an EU/EEA worker, ${s.months} months in ${YEAR}</p>
+    <p class="sub">Danish support as an EU/EEA worker, ${s.months} months in ${YEAR}.</p>
     ${badge}
-    <div class="big">${money(o.totals.cashDkk)}</div>
-    <div class="big-sub">≈ ${money(o.totals.cashHome, 'NOK')} to live on in ${YEAR}</div>
+    <div class="big">${money(o.totals.keepDkk)}</div>
+    <div class="big-sub">≈ ${money(o.totals.keepHome, 'NOK')} you keep in ${YEAR}</div>
     <dl class="lines">
       ${line('Job, after tax', money(o.job.net))}
       ${line('SU grant', money(s.grantDkk), { rate: su.grantAwayFromHomePerMonth })}
       ${line('Tax on SU', minus(s.taxDkk), { rate: rates.dk.rates.tax.bottomTax })}
-      ${line('SU loan', money(s.loanDkk), { rate: su.loanMaxPerMonth })}
       ${s.repaymentEstimate > 0 ? line('Repay for earning too much (estimate)', minus(s.repaymentEstimate), { rate: su.earningsLimitMonthWithSu }) : ''}
+      ${totalsTail(o)}
     </dl>
+    <p class="hint" style="margin-top:10px">SU is paid every month, normally on the last weekday of the month before.
+      ${sourceLink(su.payoutSchedule)}</p>
     ${e.reasons.length ? `<div class="notes" style="margin-top:12px">${reasons}</div>` : ''}
     ${perHourBoxes(o)}
+  </article>`;
+}
+
+// The answer to the question the page asks in its title. Everything below is the
+// working behind it.
+function verdictCard(r) {
+  const lk = r.lanekassen;
+  const su = r.su;
+  const cannotCombine = `<p class="note info" style="margin-top:12px">You cannot have both. Lånekassen pays nothing for the
+    months you get support from another Nordic country, and those months are deducted from your maximum time with Lånekassen.
+    ${sourceLink(rates.no.rates.lanekassen.nordicSupportExcluded)}</p>`;
+
+  if (!lk.available && !su.available) {
+    return `<article class="card verdict"><h2>Nothing to compare yet</h2>
+      <p class="sub">Pick the months you study, and the job you are considering, to see which support leaves you with most.</p>
+    </article>`;
+  }
+  if (!su.available) {
+    const why = su.eligibility.reasons.length
+      ? ` SU would need you to qualify as a worker: ${escapeHtml(su.eligibility.reasons.join(' '))}`
+      : '';
+    return `<article class="card verdict"><h2>Lånekassen is your only option here</h2>
+      <p>You keep <strong>${money(lk.totals.keepDkk)}</strong> in ${YEAR}, with ${money(lk.totals.loanDkk)} on top as loan.${why}</p>
+      ${cannotCombine}</article>`;
+  }
+  if (!lk.available) {
+    return `<article class="card verdict"><h2>SU is your only option here</h2>
+      <p>You keep <strong>${money(su.totals.keepDkk)}</strong> in ${YEAR}. Lånekassen pays nothing for the months you picked.</p>
+      ${cannotCombine}</article>`;
+  }
+
+  const diff = su.totals.keepDkk - lk.totals.keepDkk;
+  const winner = diff >= 0 ? su : lk;
+  const loser = diff >= 0 ? lk : su;
+  const winnerName = diff >= 0 ? 'SU' : 'Lånekassen';
+  const loserName = diff >= 0 ? 'Lånekassen' : 'SU';
+  const close = Math.abs(diff) < 2000;
+  const heading = close
+    ? 'The two are close this year'
+    : `${winnerName} leaves you with ${money(Math.abs(diff))} more`;
+  // Compare what actually lands in the account this year, which is lower than the
+  // full-year figure when the employer withholds without a tax card.
+  const cashDiff = loser.totals.cashThisYearDkk - winner.totals.cashThisYearDkk;
+  const cashSentence =
+    cashDiff > 0
+      ? `${loserName} puts ${money(cashDiff)} more into your account during ${YEAR}, but ${money(loser.totals.loanDkk)} of that is loan.`
+      : `${winnerName} also pays out more during ${YEAR}.`;
+  return `<article class="card verdict">
+    <h2>${heading}</h2>
+    <p>Counting only money you do not pay back, you keep <strong>${money(su.totals.keepDkk)}</strong> with SU against
+      <strong>${money(lk.totals.keepDkk)}</strong> with Lånekassen. ${cashSentence}</p>
+    ${cannotCombine}
   </article>`;
 }
 
@@ -291,7 +371,8 @@ function notes(r, input) {
 function explainer() {
   return `<article class="card">
     <h3>How to read this</h3>
-    <p class="hint" style="margin:4px 0 8px"><strong>To live on:</strong> job after tax, plus all support paid out, minus tax on support. Loans are included here but must be paid back.</p>
+    <p class="hint" style="margin:4px 0 8px"><strong>What you keep:</strong> job after tax, plus the grant after tax, minus anything you have to repay. Loans are not in this number, because you pay them back.</p>
+    <p class="hint" style="margin:0 0 8px"><strong>Into your account:</strong> the same, plus the loan, minus any tax your employer withholds beyond what you owe. Without a tax card that difference comes back the following spring.</p>
     <p class="hint" style="margin:0 0 8px"><strong>Average per hour of work:</strong> how much better off the job makes you per hour, after tax and any grant you lose.
       Loans don't count. For SU it assumes you keep SU, even though SU requires the job.</p>
     <p class="hint" style="margin:0"><strong>For one more hour:</strong> what you keep from one extra hour a week. It drops when you pass the personal allowance or Lånekassen's income limit.</p>
@@ -302,6 +383,7 @@ function render() {
   const input = readInput();
   const r = compareOptions(input, rates);
   resultsEl.innerHTML = `
+    ${verdictCard(r)}
     <div class="notes">${notes(r, input)}</div>
     <div class="compare">${lanekassenCard(r, input)}${suCard(r)}</div>
     ${jobCard(r, input)}

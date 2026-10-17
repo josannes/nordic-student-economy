@@ -95,6 +95,15 @@
         "sourceTitle": "Forskrift om utdanningsstøtte, § 100 Behovsprøving mot formue",
         "checked": "2026-09-16"
       },
+      "payoutAbroad": {
+        "value": 2,
+        "unit": "payouts per year",
+        "year": 2026,
+        "appliesTo": "Students abroad are paid once per semester, the whole semester at once, normally in June or July and in December. Students in Norway are paid monthly around the 15th.",
+        "source": "https://lanekassen.no/nb-NO/hjelp-og-kontakt/nar-kommer-pengene/",
+        "sourceTitle": "L\u00e5nekassen: N\u00e5r kommer pengene?",
+        "checked": "2026-10-17"
+      },
       "nordicSupportExcluded": {
         "value": true,
         "unit": "rule",

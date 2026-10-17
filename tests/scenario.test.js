@@ -50,6 +50,38 @@ test('totals add up', () => {
   }
 });
 
+test('what you keep leaves out the loan, and the loan is the difference to the cash paid out', () => {
+  const r = compareOptions({ ...base, su: { loanPerMonthDkk: 3799 } }, { dk, no });
+  for (const option of [r.lanekassen, r.su]) {
+    const t = option.totals;
+    const s = option.support;
+    near(t.keepDkk, option.job.net + s.grantDkk - s.taxDkk - (s.repaymentEstimate ?? 0));
+    near(t.cashDkk, t.keepDkk + t.loanDkk);
+    near(t.keepHome, t.keepDkk * 1.57);
+    assert.ok(t.loanDkk > 0, 'both options have a loan in this scenario');
+  }
+});
+
+test('with a tax card nothing comes back later, so this year is the whole year', () => {
+  const r = compareOptions(base, { dk, no });
+  for (const option of [r.lanekassen, r.su]) {
+    near(option.totals.refundNextYearDkk, 0);
+    near(option.totals.cashThisYearDkk, option.totals.cashDkk);
+  }
+});
+
+test('without a tax card part of the cash arrives the following spring', () => {
+  const r = compareOptions({ ...base, hasTaxCard: false }, { dk, no });
+  for (const option of [r.lanekassen, r.su]) {
+    const t = option.totals;
+    near(t.refundNextYearDkk, option.job.withheld - option.job.tax);
+    near(t.cashThisYearDkk, t.cashDkk - t.refundNextYearDkk);
+    assert.ok(t.cashThisYearDkk < t.cashDkk);
+    // What you end up keeping does not depend on the tax card, only when you get it.
+    near(t.keepDkk, compareOptions(base, { dk, no })[option === r.su ? 'su' : 'lanekassen'].totals.keepDkk);
+  }
+});
+
 test('average and marginal net per hour are below gross pay per hour', () => {
   const r = compareOptions(base, { dk, no });
   const grossPerHour = 98280 / r.lanekassen.job.hours;

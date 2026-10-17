@@ -598,6 +598,15 @@
         "sourceTitle": "Satser for månedsfribeløb",
         "checked": "2026-09-16"
       },
+      "payoutSchedule": {
+        "value": 12,
+        "unit": "payouts per year",
+        "year": 2026,
+        "appliesTo": "SU is paid every month, normally on the last weekday of the month before the month it covers.",
+        "source": "https://www.su.dk/su/om-su-til-videregaaende-uddannelser/udbetaling",
+        "sourceTitle": "su.dk: Udbetaling af SU",
+        "checked": "2026-10-17"
+      },
       "workerMinHoursPerWeek": {
         "value": {
           "min": 10,

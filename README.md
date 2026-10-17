@@ -13,9 +13,10 @@ nothing to install.
   withheld if you don't have a tax card yet, and how much of that comes back.
 - **What happens to my Lånekassen support?** How your income compares to the income limit,
   how much grant you lose, and how much more you can earn before it shrinks.
-- **SU or Lånekassen?** A side by side comparison for the same job: money to live on, how
-  much is grant and how much is loan, tax on SU, and whether you qualify for SU as an
-  EU/EEA worker.
+- **SU or Lånekassen?** A straight answer at the top, then the two side by side for the
+  same job: what you keep once the loan is paid back, what lands in your account during
+  the year and when it is paid, tax on SU, and whether you qualify for SU as an EU/EEA
+  worker.
 - **What is an hour of work worth?** Both the average per hour and what you keep from one
   more hour, after tax and any grant you lose.
 
