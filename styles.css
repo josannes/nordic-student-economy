@@ -126,6 +126,38 @@ input:focus-visible, button:focus-visible, summary:focus-visible {
   outline-offset: 2px;
 }
 
+input.invalid { border-color: var(--bad); }
+.field-error { margin: 2px 0 0; color: var(--bad); font-size: 0.82rem; }
+
+#municipality-wrap { display: grid; gap: 6px; }
+/* Under the student rule the municipality changes nothing, so it steps back. */
+#municipality-wrap.inactive .chips, #municipality-wrap.inactive label { opacity: 0.55; }
+
+.form-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.form-actions button {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+.form-actions button:hover { background: var(--surface-2); }
+.form-actions .hint { margin: 0; flex-basis: 100%; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .check { display: flex; gap: 8px; align-items: flex-start; }
 .check input { margin-top: 4px; accent-color: var(--accent); }
 .radio-group { display: grid; gap: 4px; }
@@ -171,6 +203,10 @@ input:focus-visible, button:focus-visible, summary:focus-visible {
 }
 .card h2, .card h3 { margin: 0 0 4px; font-size: 1.1rem; }
 .card .sub { margin: 0 0 12px; color: var(--muted); font-size: 0.85rem; }
+/* Room for two lines, so a longer sub in one card does not push its figures
+   out of line with the other. */
+.compare .card .sub { min-height: 2.6em; }
+.card-foot { margin: 10px 0 0; }
 
 .big { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .big-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 12px; font-variant-numeric: tabular-nums; }
@@ -205,6 +241,36 @@ dl.lines dd.total { text-align: right; }
 .meter { height: 10px; border-radius: 99px; background: var(--surface-2); overflow: hidden; margin: 8px 0 4px; }
 .meter > span { display: block; height: 100%; background: var(--good); }
 .meter.over > span { background: var(--bad); }
+
+/* Totals in sight while scrolling a long form on a narrow screen */
+.sticky-summary { display: none; }
+@media (max-width: 860px) {
+  body { padding-bottom: 68px; }
+  .sticky-summary {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.82rem;
+    text-decoration: none;
+    box-shadow: 0 -2px 10px rgb(0 0 0 / 0.12);
+    transition: transform 0.15s ease-out;
+  }
+  .sticky-summary[hidden] { display: none; }
+  /* Once the results are on screen the bar has nothing to add. */
+  .sticky-summary.out-of-the-way { transform: translateY(110%); }
+  .sticky-keep { min-width: 0; }
+  .sticky-more { color: var(--accent); font-weight: 600; white-space: nowrap; }
+}
 
 /* Sources */
 .sources { padding-bottom: 32px; }

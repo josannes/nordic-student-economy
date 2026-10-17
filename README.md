@@ -20,6 +20,9 @@ nothing to install.
 - **What is an hour of work worth?** Both the average per hour and what you keep from one
   more hour, after tax and any grant you lose.
 
+Everything you type lives in the page address, so "Copy link to this scenario" gives you a
+link that opens the same numbers for someone else.
+
 ## Who it is for
 
 Norwegian students taking a full degree in Denmark, living away from their parents.
@@ -37,8 +40,10 @@ Simplifications worth knowing:
 - One job with the same hours every week, and one calendar year (2026).
 - Lånekassen: you complete your degree (you can untick this), and you don't live with
   your parents. Wealth, child grants and tuition loans are not included.
-- SU: the rate for students living away from home. If you earn more than the SU earnings
-  limit, the repayment is a rough estimate.
+- SU: the rate for students living away from home. Worker status needs 10 to 12 hours a
+  week in an unbroken stretch of at least 10 weeks while you study, which the calculator
+  checks against the months you tick. If you earn more than the SU earnings limit, the
+  repayment is a rough estimate.
 - Danish tax: mellemskat and higher brackets are not calculated (you get a warning).
   The student rule for your first 365 days in Denmark is included.
 - You don't get Lånekassen and SU in the same months. The calculator compares one against
@@ -52,7 +57,8 @@ answers were spread across three agencies in two countries, so I put them in one
 
 ## How it works
 
-A static site with no build step and no tracking. Everything is calculated in your browser.
+A static site with no build step and no tracking. Everything is calculated in your browser,
+and the scenario is kept in the URL rather than on a server.
 
 ```
 index.html, styles.css   the page

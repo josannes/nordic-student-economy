@@ -3,6 +3,20 @@
 import { val } from './rates.js';
 import { WEEKS_PER_MONTH } from './job.js';
 
+/** The longest unbroken stretch of months, in months. [3, 4, 5, 9] is 3, not 4. */
+export function longestRun(months) {
+  const sorted = [...new Set(months)].sort((a, b) => a - b);
+  let best = 0;
+  let run = 0;
+  let previous = null;
+  for (const month of sorted) {
+    run = previous !== null && month === previous + 1 ? run + 1 : 1;
+    previous = month;
+    if (run > best) best = run;
+  }
+  return best;
+}
+
 /**
  * Worker status check. The hours must be met every week, so this is only
  * as good as the hours the user enters.
@@ -22,9 +36,17 @@ export function suEligibility({ hoursPerWeek, jobMonths, studyMonths }, dk) {
     status = 'borderline';
     reasons.push(`Between ${min} and ${max} hours per week: SU decides case by case.`);
   }
-  if (months.length * WEEKS_PER_MONTH < val(su.workerMinConsecutiveWeeks)) {
+  // The weeks have to be consecutive, so months scattered over the year do not
+  // add up to a qualifying period however many of them there are.
+  const minWeeks = val(su.workerMinConsecutiveWeeks);
+  const run = longestRun(months);
+  if (run * WEEKS_PER_MONTH < minWeeks) {
     status = 'notEligible';
-    reasons.push(`The job must last at least ${val(su.workerMinConsecutiveWeeks)} weeks in a row while you study.`);
+    const stretch =
+      run === 0
+        ? 'You have no month where you both study and work.'
+        : `Your longest unbroken stretch is ${run} ${run === 1 ? 'month' : 'months'}.`;
+    reasons.push(`The job must last at least ${minWeeks} weeks in a row while you study. ${stretch}`);
   }
   return { status, reasons, months: status === 'notEligible' ? [] : months };
 }

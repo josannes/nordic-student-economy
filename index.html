@@ -37,16 +37,16 @@
           The hourly wage already includes holiday pay (feriepenge)
         </label>
         <div class="months" data-group="jobMonths">
-          <span class="label">Months you work in 2026</span>
-          <div class="month-grid"></div>
+          <span class="label" id="job-months-label">Months you work in 2026</span>
+          <div class="month-grid" role="group" aria-labelledby="job-months-label"></div>
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Your studies</legend>
         <div class="months" data-group="studyMonths">
-          <span class="label">Months you study in 2026</span>
-          <div class="month-grid"></div>
+          <span class="label" id="study-months-label">Months you study in 2026</span>
+          <div class="month-grid" role="group" aria-labelledby="study-months-label"></div>
         </div>
         <label class="check">
           <input type="checkbox" name="degreeCompleted" checked>
@@ -57,15 +57,20 @@
 
       <fieldset>
         <legend>Where you live</legend>
-        <div class="chips" id="municipality-chips" role="radiogroup" aria-label="Municipality"></div>
-        <label>Other municipality (kommune)
-          <input type="text" name="municipalityOther" list="municipality-list" placeholder="Start typing…">
-          <datalist id="municipality-list"></datalist>
-        </label>
-        <div class="radio-group" role="radiogroup">
-          <span class="label">How long have you lived in Denmark?</span>
+        <div class="radio-group" role="radiogroup" aria-labelledby="residence-label">
+          <span class="label" id="residence-label">How long have you lived in Denmark?</span>
           <label class="check"><input type="radio" name="residence" value="new" checked> Less than a year (student rule)</label>
           <label class="check"><input type="radio" name="residence" value="settled"> More than 365 days within 2 years</label>
+        </div>
+        <div id="municipality-wrap">
+          <span class="label" id="municipality-label">Municipality (kommune)</span>
+          <div class="chips" id="municipality-chips" role="radiogroup" aria-labelledby="municipality-label"></div>
+          <label>Other municipality
+            <input type="text" name="municipalityOther" list="municipality-list" placeholder="Start typing…"
+              aria-describedby="municipality-status">
+            <datalist id="municipality-list"></datalist>
+          </label>
+          <p class="hint" id="municipality-status"></p>
         </div>
         <label class="check" id="church-wrap" hidden>
           <input type="checkbox" name="churchMember">
@@ -75,7 +80,7 @@
 
       <fieldset>
         <legend>Tax card</legend>
-        <div class="radio-group" role="radiogroup">
+        <div class="radio-group">
           <label class="check"><input type="radio" name="taxCard" value="yes" checked> I have a tax card (skattekort) from skat.dk</label>
           <label class="check"><input type="radio" name="taxCard" value="no"> No tax card yet</label>
         </div>
@@ -83,17 +88,20 @@
 
       <fieldset>
         <legend>Loans</legend>
-        <div class="radio-group" role="radiogroup">
-          <span class="label">Lånekassen</span>
+        <div class="radio-group" role="radiogroup" aria-labelledby="lk-loan-label">
+          <span class="label" id="lk-loan-label">Lånekassen</span>
           <label class="check"><input type="radio" name="lkLoan" value="full" checked> Full basic loan</label>
-          <label class="check"><input type="radio" name="lkLoan" value="convertibleOnly"> Only the part that can become grant (40 %)</label>
+          <label class="check"><input type="radio" name="lkLoan" value="convertibleOnly">
+            <span>Only the part that can become grant (<span id="convertible-share">40 %</span>)</span></label>
         </div>
-        <div class="radio-group" role="radiogroup">
-          <span class="label">SU loan (SU-lån)</span>
+        <div class="radio-group" role="radiogroup" aria-labelledby="su-loan-label">
+          <span class="label" id="su-loan-label">SU loan (SU-lån)</span>
           <label class="check"><input type="radio" name="suLoan" value="none" checked> No loan</label>
           <label class="check"><input type="radio" name="suLoan" value="max"> Maximum</label>
           <label class="check"><input type="radio" name="suLoan" value="custom"> Custom amount per month</label>
-          <input type="number" name="suLoanCustom" min="0" step="100" value="2000" aria-label="SU loan per month (DKK)" hidden>
+          <label id="su-loan-custom-wrap" hidden>SU loan per month (DKK)
+            <input type="number" name="suLoanCustom" min="0" step="100" value="2000" inputmode="decimal">
+          </label>
         </div>
       </fieldset>
 
@@ -108,12 +116,22 @@
         </label>
         <p class="hint" id="rate-hint"></p>
       </details>
+
+      <div class="form-actions">
+        <button type="button" id="copy-link">Copy link to this scenario</button>
+        <button type="button" id="reset-scenario">Start over</button>
+        <span class="hint" id="action-status" role="status"></span>
+      </div>
     </form>
 
-    <section class="results" aria-live="polite">
+    <section class="results">
       <div id="results"><p class="loading">Loading rates…</p></div>
     </section>
   </main>
+
+  <p class="visually-hidden" id="result-summary" aria-live="polite"></p>
+
+  <a class="sticky-summary" id="sticky-summary" href="#results" hidden></a>
 
   <section class="wrap sources" id="sources">
     <h2>Sources</h2>
